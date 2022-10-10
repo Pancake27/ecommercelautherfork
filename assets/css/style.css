@@ -586,14 +586,9 @@ body{
     --border-color: hsl(0, 0%, 20%);
 */
   
- /*hola mundo, my name is lauther, los comentarios se pone entre / y * */ 
+/*ESTILADO PARA ICONO CARRITO*/
+#cart-icon, #close{
+  cursor: pointer;
+}
 
-
-
-
-
-
-
-
-
- /*Remplazando el codigo linea 600, porque tenia un error rojo que no salia*/
+/*FIN ESTILADO PARA ICONO CARRITO*/

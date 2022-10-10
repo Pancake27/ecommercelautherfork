@@ -51,3 +51,21 @@ const listarProductos = () =>{
 
 listarProductos()
 /* FIN LISTADO DE PRODUCTOS*/
+
+
+/* CARRITO*/
+
+const cartIcon = document.getElementById('cart-icon')
+const carritoMenu = document.getElementById('carrito')
+const cierraCarrito = document.getElementById('close')
+
+/*Mostrar carrito*/
+
+cartIcon.addEventListener('click', () => {
+  carritoMenu.classList.remove('hidden');
+  cierraCarrito.addEventListener('click', () => {
+    carritoMenu.classList.add('hidden')
+  })
+  
+})
+
