@@ -67,9 +67,9 @@ const items = [
 /*LISTADO DE PRODUCTOS*/
 const contenedorProductos = document.getElementById('contenedor-productos')
 
-const listarProductos = () =>{
+const listarProductos = (arreglo) =>{
   let productos = ``
-  items.forEach(producto => {
+  arreglo.forEach(producto => {
     productos += 
     `<div class="tarjeta-producto">
       <img src="${producto.image}" class="img-producto">
@@ -86,7 +86,7 @@ const listarProductos = () =>{
   contenedorProductos.innerHTML = productos
 }
 
-listarProductos()
+listarProductos(items)
 /* FIN LISTADO DE PRODUCTOS*/
 
 
@@ -107,3 +107,44 @@ cartIcon.addEventListener('click', () => {
 })
 
 /* ---------- FIN CODE JS BY LAUTHER ---------- */
+
+/* ---------- INICIO CODE JS BY LAUTHER 2.0 ---------- */
+// Botones para el filtro
+const allProducts = document.getElementById('all-products')
+const hoodies = document.getElementById('1')
+const shirts = document.getElementById('2')
+const sweatshirts = document.getElementById('3')
+
+//Lista todos los productos
+allProducts.addEventListener('click',  () => {
+  listarProductos(items)
+})
+
+//Funcion lista por Id
+function listaPorId(id ){
+  let arrayProductoSeleccionado = []
+  items.forEach((producto) => {
+    producto.id === parseInt(id) ? 
+    arrayProductoSeleccionado.push(producto) : null
+  })
+  listarProductos(arrayProductoSeleccionado)
+}
+
+//Lista hoodies
+hoodies.addEventListener('click', () => {
+  let idButton = hoodies.getAttribute('id')
+  listaPorId(idButton)
+})
+//Lista shirts
+shirts.addEventListener('click', () => {
+  let idButton = shirts.getAttribute('id')
+  listaPorId(idButton)
+})
+
+//Lista Sweatshirts
+sweatshirts.addEventListener('click', () => {
+  let idButton = sweatshirts.getAttribute('id')
+  listaPorId(idButton)
+})
+
+/* ---------- FIN CODE JS BY LAUTHER 2.0 ---------- */
