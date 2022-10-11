@@ -761,7 +761,7 @@ body.dark{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap: 2rem;
+  gap: 1rem;
 }
 .minus-icon, .plus-icon{
   box-shadow: 0 0 2px 0 var(--text-color-light);

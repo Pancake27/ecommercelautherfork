@@ -224,7 +224,7 @@ function listaCarritoFuncion(){
               <p class="red">$${element.price}</p>
             </div>
             <div class="detalle-item-subtotal red">
-              <p>Subtotal: $24.00</p>
+              <p>Subtotal: $${element.cantidad * element.price}.00</p>
             </div>
             <div class="agrega-resta">
               <i class='bx bx-minus minus-icon'></i>
@@ -236,7 +236,27 @@ function listaCarritoFuncion(){
           </div>`
   })
   contenedorItemCarrito.innerHTML = itemCarrito
+  actualizaPieCarrito()
 }
 /* ---------- FIN CODE JS BY LAUTHER 3.0 ---------- */
 
+/* ---------- INICIO CODE JS BY LAUTHER 4.0 ---------- */
+
+//Funcionque Actualiza Cantidad de items (pie del carrito)
+function actualizaPieCarrito (){
+  const contenedorPadre = document.querySelector('.carrito-2').childNodes[1] //aquí extraigo al padre que es el div.items-precio
+  const cantidadItemsHijo = contenedorPadre.childNodes[1] //aqui extraigo solo el 'p'
+  const totalHijo = contenedorPadre.childNodes[3]
+  cantidadItemsHijo.innerHTML = `${carritoArreglo.length} items`
+  let suma = 0
+  carritoArreglo.forEach(element => {
+    suma += (element.cantidad * element.price)
+  });
+  totalHijo.innerHTML = `$${suma}.00`
+}
+/* ---------- FIN CODE JS BY LAUTHER 4.0 ---------- */
+
+
 }) /* FIN DEL DomContentLoader - NO ELIMINAR!!!*/
+
+
