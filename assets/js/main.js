@@ -1,11 +1,11 @@
 
 /* ----------INICIO CODE BY IMMER ---------- */
 
-/* INICIO DEL DomContentLoader */
+/* INICIO DEL DomContentLoader - NO ELIMINAR!! */
 document.addEventListener("DOMContentLoaded", () => {
   
   
-
+/* ----- INICIO MODO DARK ----- */
 
     /* Inicio Variables */
     const themeIcon = document.getElementById("btn-moon-nav")
@@ -22,12 +22,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       })
-      
 
-  
-  
-    })
-/* FIN DEL DomContentLoader */
+/* ----- FIN MODO DARK ----- */
+
+/* ----- INICIO FONDO BAR-NAV----- */
+
+window.addEventListener("scroll", function(){
+  var fondoNav0 = document.getElementById("bar-nav-scroll");
+  fondoNav0.classList.toggle("bar-nav-white", window.scrollY>0)
+})
+      
+/* ----- FIN CODE FONDO BAR-NAV----- */
 
 /* ----------FIN CODE BY IMMER ---------- */
 
@@ -151,7 +156,6 @@ sweatshirts.addEventListener('click', () => {
 
 /* ---------- FIN CODE JS BY LAUTHER 2.0 ---------- */
 
-
 /* ---------- INICIO CODE JS BY LAUTHER 3.0 ---------- */
 
 //Agrega productos
@@ -233,7 +237,6 @@ function listaCarritoFuncion(){
   })
   contenedorItemCarrito.innerHTML = itemCarrito
 }
-
-
-
 /* ---------- FIN CODE JS BY LAUTHER 3.0 ---------- */
+
+}) /* FIN DEL DomContentLoader - NO ELIMINAR!!!*/

@@ -122,24 +122,35 @@ body.dark{
 
 .bar-nav{
   grid-area: bar-nav;
-  position: relative;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 60px;
   display: grid;
   grid-template-areas: 
   'bar-nav1 bar-nav2';
-  color: var(--first-color);
+  color: var(--title-color);
   align-items: center;
   z-index: 1;
   padding: 0px 36px;
 }
 
-  .bar-nav1{
+.bar-nav-white{ /*Fondo bar-nav*/
+  background-color: var(--body-color);
+}
+
+#cart-icon{
+  color: var(--title-color);
+}
+
+.bar-nav1{
     grid-area: bar-nav1;
     padding-right: 30px; /*Colocado solo para separar las palabras*/
     color: var(--title-color);
-  }
+}
 
-  .bar-nav2{
+.bar-nav2{
     grid-area: bar-nav2;
     text-align: right;
     color: var(--button-color);
@@ -148,19 +159,21 @@ body.dark{
     flex-direction: row;
     justify-content: flex-end;
     gap: 0.8rem;
-  }
+}
 
-  #btn-moon-nav{
+#btn-moon-nav{
     cursor: pointer;
-  }
+    color: var(--title-color);
+}
 
-  #bt-grid-nav{
+#bt-grid-nav{
     cursor: pointer;
-  }
+    color: var(--title-color);
+}
 
-  .nav-header{
+.nav-header{
     grid-area: nav-header;
-  }
+}
 
 /* ---------- HEADER MOVIL GRID ----------*/
 
@@ -184,7 +197,6 @@ body.dark{
 .p-header{
   grid-area: header2;
   padding-top: 15px;
- 
 }
 
 .span-header{
@@ -476,8 +488,12 @@ body.dark{
     padding: 0;
   }
 
+  .bar-nav1{
+    padding-left: 60px;
+  }
+
   .bar-nav2{
-    padding-right: 24px;
+    padding-right: 80px;
   }
 
   /* ---------- NAV-HEADER GRID ---------- */
@@ -586,6 +602,14 @@ body.dark{
 
     .bar-nav{
       padding: 0;
+    }
+
+    .bar-nav1{
+      padding-left: 100px;
+    }
+  
+    .bar-nav2{
+      padding-right: 120px;
     }
    
     .contenedor-nav{
