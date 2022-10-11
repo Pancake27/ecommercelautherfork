@@ -1,3 +1,37 @@
+
+/* ----------INICIO CODE BY IMMER ---------- */
+
+/* INICIO DEL DomContentLoader */
+document.addEventListener("DOMContentLoaded", () => {
+  
+  
+
+
+    /* Inicio Variables */
+    const themeIcon = document.getElementById("btn-moon-nav")
+    const body = document.querySelector("body")
+    /* Fin Variables */
+
+    themeIcon.addEventListener("click", () => {
+    body.classList.toggle("dark")
+
+    if (themeIcon.classList.contains("bx-moon")){
+        themeIcon.classList.replace("bx-moon", "bx-sun")
+    } else{
+        themeIcon.classList.replace("bx-sun", "bx-moon")
+      }
+
+      })
+      
+
+  
+  
+    })
+/* FIN DEL DomContentLoader */
+
+/* ----------FIN CODE BY IMMER ---------- */
+
+
 /*Array de items*/
 
 const items = [
@@ -26,6 +60,9 @@ const items = [
       quantity: 20
     }
   ]
+
+
+/* ---------- INICIO CODE JS BY LAUTHER ---------- */
 
 /*LISTADO DE PRODUCTOS*/
 const contenedorProductos = document.getElementById('contenedor-productos')
@@ -69,3 +106,4 @@ cartIcon.addEventListener('click', () => {
   
 })
 
+/* ---------- FIN CODE JS BY LAUTHER ---------- */
