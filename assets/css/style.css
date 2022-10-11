@@ -360,7 +360,7 @@ body.dark{
 
 .contenedor-carrito{
   background-color: var(--container-color);
-  position: absolute;
+  position: fixed;          /*------ Le puse fixed pa que no se mueva mientras este abierto ----*/
   top: 0;
   right: 0;
   color: var(--text-color);
@@ -375,6 +375,7 @@ body.dark{
   z-index: 100;
   box-shadow: 0 0 15px 0;
   animation: cart-move 1.5s;
+  overflow-y: scroll;             /* --- le agregue este scroll para que se puedan listar mas de 3 items en el carrito ----*/
 }
 
 @keyframes cart-move{
@@ -407,6 +408,7 @@ body.dark{
 }
 
 .items-precio{
+  margin-top: 5rem;        /*----- este margin para separar los items*/
   color: var(--text-color);
   display: flex;
   justify-content: space-between;
@@ -682,5 +684,67 @@ body.dark{
 #cart-icon, #close{
   cursor: pointer;
 }
-
 /*FIN ESTILADO PARA ICONO CARRITO*/
+
+
+/* ----------- CAMBIOS LAUTHER 2.0 ------------*/
+/*ESTILADO PARA EL CARRITO*/
+
+.carrito-1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+}
+
+.item-carrito{
+  margin-top: 5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+
+.img-item-carrito{
+  width: 70px;
+  height: 80px;
+  box-shadow: 0 0 2px 0 var(--text-color-light);
+}
+
+.detalle-item{
+  width:calc(100% - 70px - 0.8rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+}
+.detalle-item-stock{
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+}
+.detalle-item-subtotal p{
+  font-size: 16px;
+}
+.red{
+  color: var(--first-color);
+}
+
+.agrega-resta{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+.minus-icon, .plus-icon{
+  box-shadow: 0 0 2px 0 var(--text-color-light);
+}
+.trash-icon{
+  color: var(--first-color);
+  margin-left: 3rem;
+}
+
+/* ----------- FIN CAMBIOS LAUTHER 2.0 ------------*/
