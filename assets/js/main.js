@@ -158,15 +158,20 @@ sweatshirts.addEventListener('click', () => {
 
 /* ---------- INICIO CODE JS BY LAUTHER 3.0 ---------- */
 
-//Agrega productos
+//Agrega productos ()
 let carritoArreglo = []
-
 function agrega(){
   for (const boton of btnsAgrega) {
     boton.addEventListener('click', e => {
       //Variables
       const idProducto = parseInt(e.target.parentElement.getAttribute('name'))
-      let productoSeleccionado = items.find( item =>item.id === idProducto)
+      sumaCarrito(idProducto)
+    })
+  }
+}
+// funcion SumaCarrito
+function sumaCarrito(idProducto) {
+  let productoSeleccionado = items.find( item =>item.id === idProducto)
       const indexproductoSeleccionado= items.indexOf(productoSeleccionado)
       let indexProductoEnCarrito = carritoArreglo.indexOf(productoSeleccionado)
       
@@ -176,21 +181,19 @@ function agrega(){
             alert('se acabó :c')
         }else{
           carritoArreglo[indexProductoEnCarrito].cantidad++
-          actualizaCantidad(indexproductoSeleccionado)
+          actualizaArrayPrincipal(indexproductoSeleccionado)
           listaCarrito()
         }
       }else{
           productoSeleccionado.cantidad = 1
           carritoArreglo.push(productoSeleccionado)
-          actualizaCantidad(indexproductoSeleccionado)
+          actualizaArrayPrincipal(indexproductoSeleccionado)
           listaCarrito()
       }
-    })
-  }
 }
 
-//funcion que resta cuando se hace click en el boton de suma
-function actualizaCantidad(index){ 
+//funcion que actualiza el array PRINCIPAL (items)
+function actualizaArrayPrincipal(index){ 
   items[index].quantity -= 1
   listarProductos(items)
 }
@@ -209,8 +212,8 @@ function listaCarrito(){
   carritoArreglo.length === 0 ? 
   contenedorItemCarrito.innerHTML = carritoVacio : listaCarritoFuncion() 
 }
-listaCarrito()
 
+listaCarrito()
 function listaCarritoFuncion(){
   let itemCarrito =``
   carritoArreglo.forEach(element =>{
@@ -227,16 +230,18 @@ function listaCarritoFuncion(){
               <p>Subtotal: $${element.cantidad * element.price}.00</p>
             </div>
             <div class="agrega-resta">
-              <i class='bx bx-minus minus-icon'></i>
+              <i class='bx bx-minus minus-icon' name="${element.id}"></i>
               <p> ${element.cantidad} units</p>
-              <i class='bx bx-plus plus-icon' ></i>
-              <i class='bx bx-trash-alt trash-icon'></i>
+              <i class='bx bx-plus plus-icon' name="${element.id}"></i>
+              <i class='bx bx-trash-alt trash-icon" '></i>
             </div>
           </div>
           </div>`
   })
   contenedorItemCarrito.innerHTML = itemCarrito
   actualizaPieCarrito()
+  plusButtonFunction()
+  minusButtonFunction()
 }
 /* ---------- FIN CODE JS BY LAUTHER 3.0 ---------- */
 
@@ -253,10 +258,54 @@ function actualizaPieCarrito (){
     suma += (element.cantidad * element.price)
   });
   totalHijo.innerHTML = `$${suma}.00`
+
+
+
 }
 /* ---------- FIN CODE JS BY LAUTHER 4.0 ---------- */
 
 
-}) /* FIN DEL DomContentLoader - NO ELIMINAR!!!*/
+function plusButtonFunction(){
+  const plusButton = document.getElementsByClassName('plus-icon')
 
+  //Buscamos el ID para la funcion de sumaCarrito
+  for (const element of plusButton) {
+      element.addEventListener('click', () => {
+      const idPlusButton = parseInt(element.getAttribute('name'))
+      sumaCarrito(idPlusButton)
+      })
+  }
+}
+
+function minusButtonFunction(){
+  const minusButton = document.getElementsByClassName('minus-icon')
+    for (const element of minusButton) {
+      element.addEventListener('click', () => {
+        const idMinusButton = parseInt(element.getAttribute('name'))
+        restaCarrito(idMinusButton)
+      })
+    }
+}
+
+function restaCarrito(idProducto) {
+      let productoSeleccionado = carritoArreglo.find( item => item.id === idProducto)
+      const indexproductoSeleccionado= items.indexOf(productoSeleccionado)
+      let indexProductoEnCarrito = carritoArreglo.indexOf(productoSeleccionado)
+      //Aqui se llena el carritoArreglo para ser listado / actualiza el array PRINCIPAL (items)
+     if(indexProductoEnCarrito !== -1){
+        if(carritoArreglo.length >= 1){
+          carritoArreglo[indexProductoEnCarrito].cantidad--
+          items[indexproductoSeleccionado].quantity += 1
+          listarProductos(items)
+          listaCarrito()
+          if(carritoArreglo[indexProductoEnCarrito].cantidad === 0){
+            carritoArreglo.splice(indexProductoEnCarrito, 1)
+            listaCarrito()
+            actualizaPieCarrito()
+          }
+        }
+      }
+}
+
+}) /* FIN DEL DomContentLoader - NO ELIMINAR!!!*/
 
