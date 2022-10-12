@@ -9,13 +9,46 @@
     <title>TeamInAction Store</title>
 </head>
 <body>
+<!---------- INICIO CODE MR-CONFIG ---------->
+  <div id="loader" class="loader-intro">
+    <!------ Intro Academlo ----->
+    <div id="loader" class="loader-intro">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48.92 56.48" class="loader--img">
+          <title>Academlo Logo</title>
+          <g>
+              <g>
+                  <path
+                  d="M24.45,56.48,0,42.36V14.12L24.46,0,48.92,14.12V42.36ZM1.89,41.26l22.56,13L47,41.26v-26l-22.56-13-22.56,13Z">
+                  </path>
+                  <path
+                  d="M28.58,15.39H25.16L35.78,36H31.49L20.67,15.71,8.23,38.82H18.94l3-5.43h-3.4l-1.47,2.54h-4l2.69-5.09H25.85l4.28,8H40.67ZM17.23,28.21l3.57-6.6,3.57,6.6Z">
+                  </path>
+              </g>
+          </g>
+      </svg>  
+  </div>
+  <!----- Intro Academlo ----->
+  </div>
   <nav class="nav">
     <div class="bar-nav" id="bar-nav-scroll">
+      <!--Menu-Right-->
+      <div class="container-navright" id="container-navright">
+        <div id="menu-navright" class="menu-navright">
+            <div class="container-listright">
+              <a href="">HOME</a>
+              <a href="">PRODUCTS</a>
+            </div>  
+        </div>
+      </div>
+      <!--Menu-Right-->                          
       <a class="bar-nav1">LOGO</a>
       <div class="bar-nav2" href="">
-        <i class='bx bx-moon' id="btn-moon-nav"></i>
-        <i class='bx bx-shopping-bag' id="cart-icon"></i>
-        <i class='bx bx-grid-alt' id="bt-grid-nav"></i>
+        <i class='bx bx-moon bx-sm' id="btn-moon-nav"></i>
+        <div class="contenedor-shopingbag">
+          <i class='bx bx-shopping-bag bx-sm' id="cart-icon"></i>
+          <span id="bag-counter" class="bag-counter">0</span>
+        </div>
+        <i class='bx bx-grid-alt bx-sm' id="bt-grid-nav"></i>
       </div>
     </div>
     <div class="contenedor-nav">
@@ -42,12 +75,13 @@
       <button class="c-btn-header2">ADD TO CART</button>
     </div>
   </header>
+  <!---------- FIN CODE MR-CONFIG ---------->
 
   <section class="section">
 
     <!--INICIO CODE BY LAUTHER-->
 
-    <section class="contenedor-carrito hidden" id="carrito">
+    <section class="contenedor-carrito" id="carrito">
       <i class='bx bx-x bx-md' id="close"></i>
       <h2>My cart</h2>
       <div class="carrito-1">

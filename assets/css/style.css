@@ -9,6 +9,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 html{
@@ -93,8 +94,52 @@ body.dark{
   display: none;
 }
 
+/*----- INICIO INTRO ACADEMLO -----*/
 
-/* ---------- ESTILADO BARRA NAVEGADOR ----------*/
+.loader-intro{
+  background-color: var(--body-color);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top:0;
+  left: 0;
+  display: grid;
+  justify-content:center;
+  align-items: center;
+  z-index: 100;
+  }
+  
+  .loader--img{
+  width: 100px;
+  fill:var(--first-color);
+  position: relative;
+  top:0;
+  animation: load 2s infinite;
+  }
+  
+  @keyframes load{
+  
+      0%{
+          top: 0;
+      }
+      
+      50%{
+          top: -30px;
+      }
+  
+      100%{
+          top:0;
+      }
+      
+  }
+  
+  .loader-intro.hide{ /*Significa cuando loader tenga la clase hide*/
+  display: none;
+  }
+  
+/*----- FIN INTRO ACADEMLO -----*/
+
+/* ---------- INICIO BARRA NAVEGADOR ----------*/
 
 .contenedor-nav{
   grid-area: contenedor-nav;
@@ -118,6 +163,49 @@ body.dark{
   padding-right: 15px;
 }
 
+/* ----- INICIO CODE MENU-RIGHT -----*/
+
+.container-navright{
+  width: 100%;
+  height: 100%;
+  /*background-color: rgba(144, 140, 140, 0.658);*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  }
+  
+  .menu-navright{
+  width: 100%;
+  height: 100%;
+  background-color: var(--container-color);
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-shadow: -4px 5px 10px rgb(147, 147, 147);
+  max-width: 400px;
+  display: none;
+  }
+
+  .container-listright{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 96px;
+    gap: 2rem;
+    font-weight: bold;
+  }
+
+  .container-listright>a{
+    color: var(--first-color);
+  }
+  
+  .hide-menuright{
+    display: block;
+  }
+  
+/* ----- FIN CODE MENU-RIGHT -----*/
+
 /* ---------- NAV GRID POSITION -----------*/
 
 .bar-nav{
@@ -126,13 +214,13 @@ body.dark{
   position: fixed;
   top: 0;
   left: 0;
-  height: 60px;
+  height: 80px;
   display: grid;
   grid-template-areas: 
   'bar-nav1 bar-nav2';
   color: var(--title-color);
   align-items: center;
-  z-index: 1;
+  z-index: 100;
   padding: 0px 36px;
 }
 
@@ -154,7 +242,6 @@ body.dark{
     grid-area: bar-nav2;
     text-align: right;
     color: var(--button-color);
-    font-size: 22px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -164,15 +251,38 @@ body.dark{
 #btn-moon-nav{
     cursor: pointer;
     color: var(--title-color);
+    z-index: 100;
 }
 
 #bt-grid-nav{
     cursor: pointer;
     color: var(--title-color);
+    z-index: 100;
 }
 
 .nav-header{
     grid-area: nav-header;
+}
+
+.contenedor-shopingbag{
+  position: relative;
+}
+
+.bag-counter{
+  background-color: var(--title-color);
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  padding: 0.25rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: var(--container-color);
+  font-size: 10px;
+  position: absolute;
+  bottom: -1px;
+  right: -5px;
+  
 }
 
 /* ---------- HEADER MOVIL GRID ----------*/
@@ -379,18 +489,18 @@ body.dark{
   width: 100%;
   height: 100%;
   max-width: 400px;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 2rem 1rem;
   z-index: 100;
   box-shadow: 0 0 15px 0;
-  animation: cart-move 1.5s;
+  animation: cart-open 1.5s;
   overflow-y: scroll;             /* --- le agregue este scroll para que se puedan listar mas de 3 items en el carrito ----*/
 }
 
-@keyframes cart-move{
+@keyframes cart-open{      /*Este keyframe es para mostrar el carrito*/
   0%{
       right: -400px;
   }
@@ -399,12 +509,21 @@ body.dark{
   }
 }
 
+@keyframes cart-close{      /*Este keyframe es para cerrar el carrito*/
+  0%{
+      right: 0px;
+  }
+  100%{
+      top: -700px;
+  }
+}
+
 .contenedor-carrito h2{
   text-align: center;
 }
 
 .contenedor-carrito p{
-  text-align: justify;
+  text-align: center;
   font-size: 14px;
 }
 
@@ -555,6 +674,9 @@ body.dark{
     font-size: 16px;
   }
 
+  #bt-grid-nav{
+    display: none;
+  }
 
   /* -------------------- FIN COODE BY MR-CONFIG ------------------- */
 
@@ -741,6 +863,7 @@ body.dark{
   width:calc(100% - 70px - 0.8rem);
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 0.8rem;
 
 }
@@ -765,6 +888,8 @@ body.dark{
 }
 .minus-icon, .plus-icon{
   box-shadow: 0 0 2px 0 var(--text-color-light);
+  display: flex;
+  align-items: center;
 }
 .trash-icon{
   color: var(--first-color);
@@ -772,3 +897,5 @@ body.dark{
 }
 
 /* ----------- FIN CAMBIOS LAUTHER 2.0 ------------*/
+
+
