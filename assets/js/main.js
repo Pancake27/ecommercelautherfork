@@ -254,7 +254,7 @@ function listaItemsCarrito(){
             <div class="detalle-item-subtotal red">
               <p>Subtotal: $${element.cantidad * element.price}.00</p>
             </div>
-            <div class="agrega-resta">
+            <div class="agrega-resta" id= "agrega-resta">
               <i class='bx bx-minus minus-icon' name="${element.id}"></i>
               <p> ${element.cantidad} units</p>
               <i class='bx bx-plus plus-icon' name="${element.id}"></i>
@@ -267,7 +267,8 @@ function listaItemsCarrito(){
   actualizaPieCarrito()         // Actualiza el Pie de carrito, para el total a pagar
   plusButtonFunction()          // Inicializa el boton de suma (en el carrito)
   minusButtonFunction()         // Inicializa el boton de resta (en el carrito)
-  borraProducto()
+  borraProducto()               // Inicializa el boton de trash (en el carrito)
+  actualizaBagCounter()         // Actualiza la bolsa del carrito (en el menu principal)
 }
 
 
@@ -332,6 +333,7 @@ function restaCarrito(idProducto) {
 }
 /* ---------- FIN FUNCIONALIDADES EN EL CARRITO (SUMA/RESTA/TOTAL/ACTUALIZA) LAUTHER 4.0 ---------- */
 
+/* *************** BORRA PRODUCTO DEL CARRITO *************** */
 function borraProducto() {
   const trashButton = document.getElementsByClassName('trash-icon')
   for (const element of trashButton) {
@@ -354,20 +356,20 @@ function borraProducto() {
     })
   }
 }
+/* *************** FIN BORRA PRODUCTO DEL CARRITO *************** */
 
 
+/* *************** ACTUALIZA BAG COUNTER *************** */
 
-
-
-
-
-
-
-
-
-
-
-
+const bagCounter = document.getElementById('bag-counter')
+function actualizaBagCounter() {
+  let totalInBag = 0
+  carritoArreglo.forEach(element => {
+    totalInBag += element.cantidad    
+  })
+  bagCounter.innerHTML = totalInBag
+}
+/* *************** FIN ACTUALIZA BAG COUNTER *************** */
 
 
 }) /* FIN DEL DomContentLoader - NO ELIMINAR!!!*/
